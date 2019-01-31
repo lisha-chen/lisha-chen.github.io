@@ -254,7 +254,7 @@ $$
 
 We use the normal equations to solve $$P^a = \mathbf{P} Vector(A_{affine})$$, then $$Vector(A_{affine}) = (\mathbf{P}^T\mathbf{P})^{-1}\mathbf{P}^T P^a$$.
 
-After getting $$A_{affine}$$, if we want to recover rotation angle $$\theta$$ and uniform scaling factor $$s$$. We do the SVD of $$A=U_A\Sigma_AV_A^T$$ and tries to find the best approximating matrix $$\hat{s} U_A V_A^T$$ such that $$ \hat{s} = {\arg\min}_{s}\|sI - \Sigma_A\|$$, then the rotation matrix $$\hat{R}_0 = U_AV_A^T$$ and scaling factor $$s=\hat{s}$$ makes $$\|\hat{S}_{u0} \hat{R}_0 - A\| = \|U_A\hat{s}IV_A^T - U_A\Sigma_AV_A^T\| = \|\hat{s}I - \Sigma_A\|$$ minimized, $$\hat{s} = trace(\Sigma_A)$$.
+After getting $$A_{affine}$$, if we want to recover rotation angle $$\theta$$ and uniform scaling factor $$s$$. We do the SVD of $$A=U_A\Sigma_AV_A^T$$ and tries to find the best approximating matrix $$\hat{s} U_A V_A^T$$ such that $$ \hat{s} = {\arg\min}_{s}\|sI - \Sigma_A\|$$, then the rotation matrix $$\hat{R}_0 = U_AV_A^T$$ and scaling factor $$s=\hat{s}$$ makes $$\|\hat{S}_{u0} \hat{R}_0 - A\| = \|U_A\hat{s}IV_A^T - U_A\Sigma_AV_A^T\| = \|\hat{s}I - \Sigma_A\|$$ minimized, $$\hat{s} = \frac{1}{2}trace(\Sigma_A)$$.
 
 Note that 
 1. $$\|\cdot\|$$ can be 2-norm or Frobenius norm. Typically we use Frobenius norm $$\|\cdot\| = \|\cdot\|_F$$.
@@ -294,9 +294,9 @@ $$
 \begin{aligned}
 &A = sR_0 + R_0 \Lambda\,/s= R_0(sI+\Lambda\,/s),\ R_0^TR_0-I=0 \Rightarrow A^TA = (sI+\Lambda\,/s)^2\\
 &R_0 = A(sI+\Lambda\,/s)^{-1}=A(A^TA)^{-\frac{1}{2}}\\
-&s = trace(A^TR_0) = trace((A^TA)^{\frac{1}{2}})\\
+&s = \frac{1}{2}trace(A^TR_0) = \frac{1}{2}trace((A^TA)^{\frac{1}{2}})\\
 \end{aligned}
 $$
 
-Check $$\hat{R}_0 = A(A^TA)^{-\frac{1}{2}} = U_A\Sigma_AV_A^T(V_A\Sigma_A^2V_A^T)^{-\frac{1}{2}} = U_A\Sigma_AV_A^T(V_A\Sigma_A^{-1}V_A^T) = U_AV_A^T$$, $$\hat{s}=trace((A^TA)^{\frac{1}{2}}) =trace(V_A\Sigma_AV_A^T)= trace(\Sigma_A)$$, same as the above solution derived from SVD.
+Check $$\hat{R}_0 = A(A^TA)^{-\frac{1}{2}} = U_A\Sigma_AV_A^T(V_A\Sigma_A^2V_A^T)^{-\frac{1}{2}} = U_A\Sigma_AV_A^T(V_A\Sigma_A^{-1}V_A^T) = U_AV_A^T$$, $$\hat{s}=\frac{1}{2}trace((A^TA)^{\frac{1}{2}}) =\frac{1}{2}trace(V_A\Sigma_AV_A^T)= \frac{1}{2}trace(\Sigma_A)$$, same as the above solution derived from SVD.
 

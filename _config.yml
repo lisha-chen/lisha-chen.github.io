@@ -1,26 +1,32 @@
 # Site settings
-title: Lisha Chen
-SEOTitle: Lisha Chen's website | Lisha's site
-header-img: img/home-bg-wood.jpg
-email: lishachen00@gmail.com
-description: "Let life be beautiful like summer flowers."
+title: Lisha's Homepage
+SEOTitle: Lisha Chen
+header-img: img/home-bg-greenwood.jpg
+
+description: "Lisha's website"
 keyword: "Lisha, Lisha Chen, Lisha Chen website"
 url: "http://lisha-chen.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
+blogurl: "/blog"
 github_repo: "https://github.com/lisha-chen/lisha-chen.github.io.git" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "I'm currently a PhD candidate at RPI."
+#sidebar-about-description: "Currently a PhD at RPI."
 #sidebar-avatar: /img/about-BY-gentle.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+
+email: chenl21@rpi.edu
+address: "110 8th Street, Troy NY, US"
 
 
 
 # SNS settings
 RSS: false
 # weibo_username:    
-#zhihu_username:     
-github_username:    lisha-chen
+#zhihu_username: 
+github_username: lisha-chen
+linkedin_username: lisha-chen-l95725
 #facebook_username:  
 #jianshu_username:   
 #twitter_username:   
@@ -31,9 +37,11 @@ github_username:    lisha-chen
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 permalink: pretty
-paginate: 10
+paginate: 2
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
-anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+anchorjs: true  
+paginate_path: "/blog/page:num/"
+# if you want to customize anchor. check out line:181 of `post.html`
 
 
 
@@ -61,9 +69,9 @@ kramdown:
 
 # Gitalk
 gitalk:
-  enable: true    #是否开启Gitalk评论
-  clientID: f2c84e7629bb1446c1a4                            #生成的clientID
-  clientSecret: ca6d6139d1e1b8c43f8b2e19492ddcac8b322d0d    #生成的clientSecret
+  enable: false    #是否开启Gitalk评论
+  clientID: 725ba9c231eae2d9e472                            #生成的clientID
+  clientSecret: 6a6b227899a58abcd13ab2502f94d6bd6939727a    #生成的clientSecret
   repo: lisha-chen.github.io    #仓库名称
   owner: lisha-chen    #github用户名
   admin: lisha-chen
@@ -74,7 +82,7 @@ gitalk:
 
 # Analytics settings
 # Baidu Analytics
-ba_track_id: b50bf2b12b5338a1845e33832976fd68
+# ba_track_id: b50bf2b12b5338a1845e33832976fd68
 
 # Google Analytics
 #ga_track_id: 'UA-90855596-1'            # Format: UA-xxxxxx-xx
@@ -82,16 +90,14 @@ ba_track_id: b50bf2b12b5338a1845e33832976fd68
 
 
 
-
-
 # Featured Tags
-featured-tags: true                     # 是否使用首页标签
-featured-condition-size: 1              # 相同标签数量大于这个数，才会出现在首页
+featured-tags: false                     # 是否使用首页标签
+featured-condition-size: 10              # 相同标签数量大于这个数，才会出现在首页
 
 
 
 # Progressive Web Apps
-chrome-tab-theme-color: "#000000"
+chrome-tab-theme-color: "#000001"
 service-worker: true
 
 
@@ -101,9 +107,6 @@ service-worker: true
 #     {
 #         title: "WY",
 #         href: "http://zhengwuyang.com"
-#     },{
-#         title: "简书·BY",
-#         href: "http://www.jianshu.com/u/e71990ada2fd"
 #     },{
 #         title: "Apple",
 #         href: "https://apple.com"

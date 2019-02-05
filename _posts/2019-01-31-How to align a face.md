@@ -22,17 +22,23 @@ Aligning faces typically serves as a preprocessing step for higher-level facial 
 
 ## Different transformations
 
-We use homogeneous coordinates.
-
-$$\mathbf{p} = \begin{bmatrix}x\\y\\1\end{bmatrix}$$
+We use homogeneous coordinates $$\mathbf{p} = \begin{bmatrix}x &y &1\end{bmatrix}^T$$.
 
 
+### Translation
+
+Translation needs two parameters $$t_x, t_y$$.
+$$
+T = \begin{bmatrix} 1 & 0 & t_x\\ 
+0 & 1 & t_y\\
+0 &0 &1
+\end{bmatrix}
+$$
 
 
 ### Rotation
 
-In-plane rotation with zero center needs one paramter $$\theta$$.
-
+In-plane rotation with zero center needs one parameter $$\theta$$.
 $$
 R_0 = \begin{bmatrix} \cos\theta & -\sin\theta & 0 \\ 
 \sin\theta & \cos\theta & 0 \\
@@ -41,7 +47,6 @@ R_0 = \begin{bmatrix} \cos\theta & -\sin\theta & 0 \\
 $$
 
 Rotation with non-zero center
-
 $$
 R = \begin{bmatrix} \cos\theta & -\sin\theta & x_{r0}(1-\cos\theta)+ y_{r0}\sin\theta \\
 \sin\theta & \cos\theta &- x_{r0}\sin\theta+ y_{r0}(1-\cos\theta)\\
@@ -69,30 +74,10 @@ R &= \begin{bmatrix} \cos\theta & -\sin\theta & x_{r0}(1-\cos\theta)+ y_{r0}\sin
 \end{align}
 $$
 
-### Translation
-
-Translation needs two parameters $$t_x, t_y$$.
-
-$$
-T = \begin{bmatrix} 1 & 0 & t_x\\ 
-0 & 1 & t_y\\
-0 &0 &1
-\end{bmatrix}
-$$
 
 ### Scaling
 
-Uniform scaling with zero center needs one paramter $$s$$.
-
-$$
-S_{u0} = \begin{bmatrix} s & 0 & 0\\ 
-0 & s & 0\\
-0 &0 &1
-\end{bmatrix}
-$$
-
-Non-uniform scaling with zero center needs two parameters $$s_x,s_y$$
-
+Non-uniform scaling with zero center needs two parameters $$s_x,s_y$$.
 $$
 \begin{equation}
 S_0 = \begin{bmatrix}
@@ -105,15 +90,7 @@ $$
 
 Non-uniform scaling in directions other than vertical and horizontal may need to combine rotations with $$S_0$$.
 
-Scaling with non-zero center $$[x_{s0},y_{s0}]$$
-
-$$
-S_u = \begin{bmatrix} s & 0 & x_{s0}(1-s)\\ 
-0 & s & y_{s0}(1-s)\\
-0 &0 &1
-\end{bmatrix}
-$$
-
+Scaling with non-zero center $$[x_{s0},y_{s0}]$$.
 $$
 S = \begin{bmatrix} 
 s_x & 0 & x_{s0}(1-s_x)\\ 
@@ -121,6 +98,8 @@ s_x & 0 & x_{s0}(1-s_x)\\
 0 &0 &1
 \end{bmatrix}
 $$
+
+For uniform scaling $$S_{u0}, S_u$$ , $$s_x=s_y$$.
 
 Scaling with non-zero center can be decomposed as a scaling with zero center and a translation.
 
@@ -143,7 +122,6 @@ $$
 ### Rotation+Scaling+Translation
 
 One way of transforming the image without warping is to apply rotation, uniform scaling and translation.
-
 
 $$
 \begin{aligned}
@@ -223,10 +201,6 @@ To align the face using Affine transformation, we first solve the affine transfo
 
 ### Solve the transformation matrix
 
-If we just want to align 2 points such as two eye corners, for example. We could first compute rotation angle $$\theta$$ to make the line connecting two eye corners horizontal.
-
-Then we apply translation and scaling to make the two eye corners located at where we want in the target image.
-
 If we want to align 3 points such as two eye corners plus one nose tip, we directly solve the Affine transformation matrix which has 6 independent parameters and needs exactly 3 points.
 
 
@@ -253,6 +227,48 @@ Vector(A_{affine})
 $$
 
 We use the normal equations to solve $$P^a = \mathbf{P} Vector(A_{affine})$$, then $$Vector(A_{affine}) = (\mathbf{P}^T\mathbf{P})^{-1}\mathbf{P}^T P^a$$.
+
+
+### Impose orthogonal constraint on Affine transformation matrix
+
+If we want to get uniform scaling, we need at least 2 points such as two eye corners. We could first compute rotation angle $$\theta$$ to make the line connecting two eye corners horizontal. Then we apply translation and scaling to make the two eye corners located at where we want in the target image. Or we can still first solve a linear system with orthogonal constraint and then obtain the rotation angle, scaling factor and translation.
+
+If we impose the orthogonal constraint when solving the affine transformation matrix. The affine transformation becomes
+
+$$\mathbf{p}^{affine}=
+\begin{bmatrix}
+a_{00} & -a_{10} & b_{00}\\ 
+a_{10} & a_{00} & b_{10}\\
+0 &0 &1
+\end{bmatrix}
+\mathbf{p}
+= A_{affine}\mathbf{p}$$
+
+Let $$Vector(A_{affine}) = \begin{bmatrix}a_{00} &a_{10} &b_{00} &b_{10}\end{bmatrix}^T $$, the problem becomes
+
+$$
+\begin{bmatrix}
+\mathbf{p}_{1x}^a\\
+\mathbf{p}_{1y}^a\\
+\vdots\\
+\mathbf{p}_{Nx}^a\\
+\mathbf{p}_{Ny}^a\\
+\end{bmatrix}
+= \begin{bmatrix}
+\mathbf{p}_{1x} & -\mathbf{p}_{1y} & 1 & 0\\
+\mathbf{p}_{1y} & \mathbf{p}_{1x} & 0 & 1\\
+\vdots &\vdots &\vdots &\vdots\\
+\mathbf{p}_{Nx} & -\mathbf{p}_{Ny} & 1 & 0\\
+\mathbf{p}_{Ny} & \mathbf{p}_{Nx} & 0 & 1\\
+\end{bmatrix}
+Vector(A_{affine})
+$$
+
+Again we use the normal equations to solve $$P^a = \mathbf{P} Vector(A_{affine})$$, then $$Vector(A_{affine}) = (\mathbf{P}^T\mathbf{P})^{-1}\mathbf{P}^T P^a$$. Then $$s = \|[a_{00},a_{10}]\|_2$$ and $$\theta = sign(a_{10}) \arccos(\frac{a_{00}}{s})$$.
+
+
+
+### Recover rotation and uniform scaling from general affine transformation matrix
 
 After getting $$A_{affine}$$, if we want to recover rotation angle $$\theta$$ and uniform scaling factor $$s$$. We do the SVD of $$A=U_A\Sigma_AV_A^T$$ and tries to find the best approximating matrix $$\hat{s} U_A V_A^T$$ such that $$ \hat{s} = {\arg\min}_{s}\|sI - \Sigma_A\|$$, then the rotation matrix $$\hat{R}_0 = U_AV_A^T$$ and scaling factor $$s=\hat{s}$$ makes $$\|\hat{S}_{u0} \hat{R}_0 - A\| = \|U_A\hat{s}IV_A^T - U_A\Sigma_AV_A^T\| = \|\hat{s}I - \Sigma_A\|$$ minimized, $$\hat{s} = \frac{1}{2}trace(\Sigma_A)$$.
 
@@ -299,4 +315,86 @@ $$
 $$
 
 Check $$\hat{R}_0 = A(A^TA)^{-\frac{1}{2}} = U_A\Sigma_AV_A^T(V_A\Sigma_A^2V_A^T)^{-\frac{1}{2}} = U_A\Sigma_AV_A^T(V_A\Sigma_A^{-1}V_A^T) = U_AV_A^T$$, $$\hat{s}=\frac{1}{2}trace((A^TA)^{\frac{1}{2}}) =\frac{1}{2}trace(V_A\Sigma_AV_A^T)= \frac{1}{2}trace(\Sigma_A)$$, same as the above solution derived from SVD.
+
+## Implementation
+
+We directly use OpenCV's function to do this. Below provides the function for 3 methods (general affine transformation, orthogonal transformation, post imposing orthogonal constraint) to align a face.
+
+
+```
+import numpy as np
+
+def get_affine_matrix(orig_pts, target_pts):
+    """
+    input:
+    orig_pts: N*2 original points location
+    target_pts: N*2 target points location
+    """
+    N = orig_pts.shape[0]
+    P = np.zeros((2 * N, 6))
+    pa = target_pts.reshape((-1, 1), order='F')
+    
+    P[0:N, 0:2] = orig_pts
+    P[0:N, 2] = np.ones((N, ))
+    P[N:2*N, 3:5] = orig_pts
+    P[N:2*N, 5] = np.ones((N, ))
+    
+    VA = np.matmul(np.matmul(np.linalg.inv(np.matmul(np.transpose(P), P)),
+                   np.transpose(P)), pa)
+    return VA.reshape((2, 3))
+
+def get_orthogonal_affine_matrix(orig_pts, target_pts):
+    """
+    input:
+    orig_pts: N*2 original points location
+    target_pts: N*2 target points location
+    """
+    N = orig_pts.shape[0]
+    P = np.zeros((2 * N, 4))
+    pa = target_pts.reshape((-1, 1), order='F')
+    
+    P[0:N, 0] = orig_pts[:, 0]
+    P[0:N, 1] = -orig_pts[:, 1]
+    P[0:N, 2] = np.ones((N, ))
+    
+    P[N:2 * N, 0] = orig_pts[:, 1]
+    P[N:2 * N, 1] = orig_pts[:, 0]
+    P[N:2 * N, 3] = np.ones((N, ))
+    
+    VA = np.matmul(np.matmul(np.linalg.inv(np.matmul(np.transpose(P), P)),
+                   np.transpose(P)), pa)
+    A = np.zeros((2, 3))
+    A[0:2, 0:2] = np.diag([VA[0,0], VA[0,0]]) + \
+                    np.flip(np.diag([VA[1,0],-VA[1,0]]),axis=0)
+    A[0:2, 2] = VA[2:4].reshape((-1))
+    
+    return A
+
+def post_orthogonal_affine_matrix(A):
+    """
+    input:
+    A: affine matrix
+    """
+    A22 = A[0:2,0:2]
+    U, Sig, V = np.linalg.svd(A22,full_matrices=True)
+    s = np.sum(Sig)/2.0
+    A_orth = np.zeros(A.shape)
+    A_orth[0:2,0:2] = s * np.matmul(U, np.transpose(V))
+    A_orth[0:2, 2] = A[0:2, 2]
+    return A_orth
+```
+
+### Face alignment result
+
+The target points location are 
+[[13.00 , 50.00 , 31.50],
+[15.00 , 15.00 , 26.00 ]]
+
+![face alignment using 3 methods](/assets/postimgs/How_to_align_a_face_1.png){:class="img-responsive"}
+
+From the results we can see that:
+1. Post orthogonal imposes ortho-constraint after getting the affine matrix, it is least accurate in the target landmark location.
+2. General affine matrix introduces non-uniform scaling in different directions, may result in some warping of the faces.
+
+
 

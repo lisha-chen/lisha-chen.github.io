@@ -126,6 +126,8 @@ Since $$\Gamma(x+1) = x\Gamma(x)$$.
 $$\theta_{i}^*={\arg\max}_{\theta} p(\theta\mid \boldsymbol{\alpha}) = {\frac {\alpha _{i}-1}{\sum _{k=1}^{K}\alpha _{k}-K}}$$
 
 
+There are two ways to compute the mode. One is by taking the derivative and set it to zero, the other is by using the Gibbs' inequality.
+
 **Take derivative**
 
 $$

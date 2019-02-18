@@ -126,7 +126,7 @@ Since $$\Gamma(x+1) = x\Gamma(x)$$.
 $$\theta_{i}^*={\arg\max}_{\theta} p(\theta\mid \boldsymbol{\alpha}) = {\frac {\alpha _{i}-1}{\sum _{k=1}^{K}\alpha _{k}-K}}$$
 
 
-##### Take derivative
+**Take derivative**
 
 $$
 \begin{aligned}
@@ -140,7 +140,7 @@ $$ \frac{\alpha_i - 1}{\theta_i} - \frac{\alpha_K - 1}{1 - \sum_{k=1}^{K-1}\thet
 
 Solving the linear equations we will get $$\theta_{i}^*= {\frac {\alpha _{i}-1}{\sum _{k=1}^{K}\alpha _{k}-K}}$$.
 
-##### Gibbs' inequality
+**Gibbs' inequality**
 
 We could directly apply Gibbs' inequality to get $$\theta^* = {\arg\max}_{\theta} \sum_{i=1}^{K} {(\alpha_i-1)}\log \theta_i, \, s.t.\, \sum_{i=1}^K \theta_i = 1 $$.
 

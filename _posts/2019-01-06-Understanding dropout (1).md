@@ -72,7 +72,7 @@ It is proposed in [1,3] that sampling multiple dropout networks and combining th
 
 Basically the MC dropout performs the same random dropout procedure during training and testing, with or without scaling. By performing MC dropout at test time, we obtain multiple sets of neural network parameters $$\theta_s$$, in [4] it is derived that they are equivalent to being sampled from a variational distribution $$q(\theta \mid D)$$, so that the final predicted probability is computed by 
 
-$$ p(y\mid x, D) \approx \sum_s p(y\mid x,\theta_s) $$
+$$ p(y\mid x, D) \approx \frac{1}{S} \sum_s p(y\mid x,\theta_s) $$
 
 
 ## Dropout implementation

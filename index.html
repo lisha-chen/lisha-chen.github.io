@@ -34,11 +34,11 @@
                 // Specify the first and last part of the image tag. 
                 var images = ['"figures/photo2.jpg" width="177px" height="250px">',
                   '"figures/photos/HUST_graduate.jpg" width="177px" height="250px">',
-                  '"figures/photo_lisha.png" width="177px" height="250px">'
+                  '"figures/photos/HUST_lotus2.png" width="177px" height="250px">'
                 ];
                 start = '<img src=';
                 function printImage() {
-                  var rand_int = Math.floor(Math.random() * 9);
+                  var rand_int = Math.floor(Math.random() * images.length);
                   document.write(start + images[rand_int]);
                 }
     </script>

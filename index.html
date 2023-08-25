@@ -29,10 +29,19 @@
 </div>
 <table class="imgtable"><tr><td>
 <a href="https://lisha-chen.github.io/">
+  
+  <img src="figures/photo2.jpg" alt="alt text" width="177px" height="250px"  onclick="changePicture()"/>
   <!--
-  <img src="figures/photo2.jpg" alt="alt text" width="177px" height="250px" />
-  -->
   <img src="figures/photos/HUST_graduate.jpg" alt="alt text" width="177px" height="250px" />
+  -->
+  <script>
+  function changePicture(){
+   var yourImages = ["figures/photo2.jpg","figures/photos/HUST_graduate.jpg"];
+   var randomImage = Math.round(Math.random()*yourImages.length);
+   var setImg = document.getElementById("currentImage").src;
+   setImg = yourImages[randomImage];
+  }
+  </script>
 </a>&nbsp;</td>
 <td align="left">
 <p> <b>Lisha Chen</b></p>  

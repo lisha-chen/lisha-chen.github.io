@@ -69,6 +69,10 @@ a, a > tt {
 	text-decoration: none;
 }
 
+a:link {
+	color: #5a3e84;
+}
+
 a:hover {
 	border-bottom: 1px gray dotted;
 }

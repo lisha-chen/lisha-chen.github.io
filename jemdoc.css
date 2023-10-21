@@ -15,7 +15,7 @@ body {
 	font-weight: 300;
 	padding-bottom: 8px;
 	margin: 0;
-	line-height: 2.5em;
+	line-height: 2em;
 	background: #F3F9FD;
 /* 	background-image:url('figures/umnphoto.jpg');
 	background-repeat:repeat; */
@@ -161,7 +161,7 @@ p {
 	margin-top: 0.0em;
 	margin-bottom: 0.8em;
 	padding: 0;
-	line-height: 1.3;
+	line-height: 1.5;
 }
 
 pre {

@@ -11,9 +11,10 @@ table#tlayout {
 
 body {
 	background: white;
-	font-family: Georgia, serif;
+	font-family: sans-serif;
 	padding-bottom: 8px;
 	margin: 0;
+	line-height: 1.5em;
 	background: #F3F9FD;
 /* 	background-image:url('figures/umnphoto.jpg');
 	background-repeat:repeat; */

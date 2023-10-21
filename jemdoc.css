@@ -11,7 +11,8 @@ table#tlayout {
 
 body {
 	background: white;
-	font-family: Sans-Serif;
+	font-family: "Roboto",sans-serif;
+	font-weight: 300;
 	padding-bottom: 8px;
 	margin: 0;
 	line-height: 2.5em;

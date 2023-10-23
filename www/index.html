@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="main.css" type="text/css" />
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 <!--- <title></title> --->
-<title>jemdoc + new design</title>
+<title>Lisha Chen</title>
 <!-- MathJax -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
 </script>
@@ -55,11 +55,9 @@ MathJax.Hub.Config({
 </div> <!-- <div id="layout-menu-container"> -->
 <div id="layout-content-container">
 <div id="layout-content">
-<div id="text-img-container">
 
-<table bordercolor=#f5f3f7 class="imgtable" ><tr>
+    <div id="text-img-container"><div id="img-container">  
     <a href="https://lisha-chen.github.io/">
-        <td width="200px">
         <script type="text/javascript" language="JavaScript">
             // Specify the first and last part of the image tag. 
             var images = ['"figures/photos/scholar.jpg" width="173px" height="250px">',
@@ -76,10 +74,10 @@ MathJax.Hub.Config({
         <script type="text/javascript" language="JavaScript">
             printImage();
         </script>
-        </td> 
-    </a>&nbsp; 
+    </a>&nbsp;
+</div> 
 
-<td align="left"> 
+
 <div id="text-container"> 
  
 <p><b>Lisha Chen</b> <br />
@@ -97,7 +95,7 @@ E-mail: chenl21 [AT] rpi.edu</p>
     <a href="https://github.com/lisha-chen"><i class="fa fa-github" style="font-size:2.5em; color:#14003a"></i></a>&nbsp;</p>
 </div></div>
 
-</td></tr></table>
+
 
 <h2>About me</h2>
 <p>I am a Ph.D. candidate at <a href="https://www.ecse.rpi.edu/">Rensselaer Polytechnic Institute (RPI)</a>, fortunate to be advised by <a href="https://chentianyi1991.github.io/">Prof. Tianyi Chen</a>. 
@@ -161,9 +159,10 @@ My broad research interests include machine learning,  optimization, and statist
 </li>
 </ul>
 
-
+<!--
 <h2>Visitors</h2>
-<script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=Z_JPB6poDZfGBlYfT1Izx3Gkrox2Hvv7GdFsG2CwiZ4&cl=ffffff&w=a"></script>
+<script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=461&t=n&d=YW1ED8KuaOj3FkxPSChS0cCe6VhjVL4mDncGYSCHJbY'></script>
+-->
 </div> <!-- <div id="layout-content"> -->
 <div id="footer-container">
 <div id="footer">
@@ -179,8 +178,8 @@ Powered by <a href="https://github.com/szl2/jemdoc-new-design" target="blank">je
 <script>
 function openNav() {
     if (window.innerWidth <= 1200) {
-        document.getElementById("layout-menu").style.width = "280px";
-        document.getElementById("layout-content-container").style.marginLeft = "280.8px";
+        document.getElementById("layout-menu").style.width = "200px";
+        document.getElementById("layout-content-container").style.marginLeft = "200.8px";
         document.getElementById("layout-content-container").style.position = "fixed";
     }
 }

@@ -38,7 +38,10 @@ div#header-icon-text-container {
 }
 
 div#header-icon-container {
-	height:45px; width:45px;
+	height:36px; width:36px;
+	position: absolute;
+    top: 25px;
+    right: 25px;
 	display:inline-block;
 	vertical-align: middle;
 	background-color: #f5f3f7;
@@ -544,6 +547,9 @@ div#main{
 }
 
 .openbtn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
   font-size: 0;
   background: none;
   color: none;
@@ -553,7 +559,9 @@ div#main{
 .openbtn:hover {
 }
 
-
+.toggle-checkbox {
+	display: none; /* This hides the checkbox from view */
+  }
 
 div#layout-menu-container .closebtn {
 	font-size: 0;
@@ -595,18 +603,54 @@ div#layout-menu-container .closebtn:hover {
 	}
 
 	.openbtn {
+	 position: absolute;
+     top: 15px;
+     left: 15px;	
 	  font-size: 26px;
 	  cursor: pointer;
 	  background: none;
 	  color: #f5f3f7;
-	  padding: 8px 9px 8px 9px;
+	  padding: 8px 0px 8px 9px;
 	  border: none;
-	  width:45px;
+	  width:40px;
+	  transition: background 0.1s ease;
 	}
 
 	.openbtn:hover {
-		background-color: #2f363d;
+		background-color: #5e6b79;
 	}
+
+	/* Change button appearance when the checkbox is checked (open state) */
+  .toggle-checkbox:checked + .openbtn {
+	background: #5e6b79; /* Red background when "closed" */
+  }
+  
+  /* Change button text content when the checkbox is checked */
+  .toggle-checkbox:checked + .openbtn::after {
+	content: none;
+  }
+
+  .toggle-checkbox {
+	display: none; /* This hides the checkbox from view */
+  }
+  
+  /* Default button text content */
+  .openbtn::after {
+	content: none;
+  }
+  
+  /* Toggle content visibility based on checkbox state */
+  .content {
+	display: none;
+  }
+  
+  .toggle-checkbox:checked ~ .content {
+	display: block;
+	margin-top: 60px;
+	padding: 10px;
+	border: 0px solid #ddd;
+	background-color: #f9f9f9;
+  }
 
 	div#layout-menu-container .closebtn {
 	  position: absolute;

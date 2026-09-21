@@ -725,10 +725,10 @@ div#layout-menu-container .closebtn:hover {
 
 
 /* members */
-div#member-container{
+.member-container{
 	text-align: center;
 }
-div#member{
+.member{
 	display: inline-block;
 	vertical-align: top;
 	width: 150px;
@@ -737,16 +737,23 @@ div#member{
 	margin-right: 10px;
 }
 
-div#member img{
+.member img{
 	width: 150px;
 	margin: 0px;
 	padding: 0px;
 }
 
-div#member p{
+.member p{
 	text-align: center;
 	margin: 0px;
 	padding: 0px;
+}
+
+@media screen and (max-width: 600px) {
+	.member {
+		display: block;
+		margin: 0 auto 20px;
+	}
 }
 
 

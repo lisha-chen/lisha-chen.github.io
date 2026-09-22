@@ -726,7 +726,7 @@ div#layout-menu-container .closebtn:hover {
 
 /* members */
 .member-container{
-	text-align: center;
+	text-align: left;
 }
 .member{
 	display: inline-block;
@@ -752,7 +752,7 @@ div#layout-menu-container .closebtn:hover {
 @media screen and (max-width: 600px) {
 	.member {
 		display: block;
-		margin: 0 auto 20px;
+		margin: 0 0 20px;
 	}
 }
 

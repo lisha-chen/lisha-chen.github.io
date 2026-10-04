@@ -30,6 +30,82 @@ MathJax.Hub.Config({
         .old-news {
             display: none;
     }
+    .bibtex-toggle {
+        background: transparent;
+        color: #14003a;
+        border: 1px solid #14003a;
+        border-radius: 3px;
+        padding: 1px 6px;
+        font: inherit;
+        cursor: pointer;
+    }
+    .bibtex-toggle:hover,
+    .bibtex-toggle:focus-visible {
+        background-color: #14003a;
+        color: white;
+    }
+    .news-resources {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.4em;
+        vertical-align: baseline;
+    }
+    .news-divider {
+        height: 1em;
+        width: 0;
+        border-left: 1px solid #0366d6;
+        flex: 0 0 auto;
+    }
+    .news-detail-toggle {
+        display: inline-block;
+        position: relative;
+        vertical-align: baseline;
+        padding: 0 0 0 12px;
+        border: none;
+        background: transparent;
+        color: #0366d6;
+        font: inherit;
+        cursor: pointer;
+    }
+    .news-detail-toggle:hover {
+        color: #14003a;
+        text-decoration: underline;
+    }
+    .toggle-triangle {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border-top: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-left: 6px solid #14003a;
+        transform: translateY(-50%);
+        transition: transform 0.15s ease;
+    }
+    .news-detail-toggle[aria-expanded="true"] .toggle-triangle {
+        transform: translateY(-50%) rotate(90deg);
+    }
+    .bibtex-entry {
+        position: relative;
+        margin: 8px 0;
+        padding: 42px 10px 10px;
+        border: 1px solid #ddd;
+        background: #f5f3f7;
+    }
+    .bibtex-entry pre {
+        margin: 0;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        font-size: 0.9em;
+    }
+    .bibtex-copy {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        font-size: 0.85em;
+    }
 </style>
 <style>
     /* Basic button styling */
@@ -152,7 +228,7 @@ lisha.chen [AT] rochester.edu
 
 
 <h2>About me</h2>
-<p>I am an Assistant Professor in the Department of Electrical and Computer Engineering at the <a href="https://www.hajim.rochester.edu/ece/">University of Rochester</a>. I did my Ph.D. at Rensselaer Polytechnic Institute (RPI), fortunate to be advised by <a href="https://chentianyi1991.github.io/">Prof. Tianyi Chen</a> (now at CornellTech).
+<p>I am an Assistant Professor in the Department of Electrical and Computer Engineering at the <a href="https://www.hajim.rochester.edu/ece/">University of Rochester</a>. I did my Ph.D. at Rensselaer Polytechnic Institute (RPI), fortunate to be advised by <a href="https://chentianyi1991.github.io/">Prof. Tianyi Chen</a> (now at Cornell).
 I obtained my M.S. in Electrical Engineering from RPI in 2021, and my B.S. from Huazhong University of Science and Technology (HUST) in 2017.<br /><br />
 My research lies at the intersection of machine learning, optimization, and statistical signal/image processing, with a current focus on the theory and applications of multi-objective and multi-level optimization and learning. Motivated by real-world scientific and engineering systems, I develop foundations to address problems involving competing objectives, resource constraints, multiple data modalities, heterogeneous users and devices, and hierarchical decision-making under uncertain environments. I aim to connect theoretical insights with practical needs.
 </p>  
@@ -167,6 +243,10 @@ If you are interested, please check out more details <a href="https://lisha-chen
 <h2>News</h2>
 <div class="news-section">
 <ul>
+<li><p>Nov 2026: I will give a talk at the University of Illinois Urbana-Champaign (UIUC) Machine Learning Seminar. Looking forward to connecting and engaging in discussions!</p>
+</li>
+</ul>
+<ul>
 <li><p>Oct 2026: Congrats to Liuyuan Jiang on receiving the <a href="https://signalprocessingsociety.org/community-involvement/sps-scholarship-program">2026 IEEE Signal Processing Society (SPS) Scholarship</a>!</p>
 </li>
 </ul>
@@ -177,8 +257,18 @@ If you are interested, please check out more details <a href="https://lisha-chen
 <ul>
 <li><p>Sep 2026: Our paper on uniform coverage of the Pareto front is accepted by <b>NeurIPS 2026</b>. Congrats to Liuyuan Jiang and Chentong Huang! We will present this work in Atlanta, GA, this December.<br />
     <a href="https://arxiv.org/pdf/2605.20619">SURF: Steering the Scalarization Weight to Uniformly Traverse the Pareto Front</a><br />
-    <a href="files/neurips2026_surf/SURF_slides_NIPS26.pdf">Preliminary slides</a> | <a href="https://github.com/Liuyuan999/MOO_Uniform_PF">Code</a><br />
-    SURF studies how scalarization weights control the traversal speed along the Pareto front by analyzing the Pareto front geometry. Building on this, SURF proposes a geometry-guided weight sampling rule for uniform Pareto-front coverage. We apply the method to multi-objective RL and multi-objective LLM alignment.</p>
+    <span class="news-resources"><a href="files/neurips2026_surf/SURF_slides_NIPS26.pdf">Preliminary slides</a><span class="news-divider" aria-hidden="true"></span><a href="https://github.com/Liuyuan999/MOO_Uniform_PF">Code</a><span class="news-divider" aria-hidden="true"></span><button type="button" class="news-detail-toggle" aria-expanded="false" aria-controls="surf-description" onclick="toggleNewsDetail(this)"><span class="toggle-triangle" aria-hidden="true"></span>Short description</button><span class="news-divider" aria-hidden="true"></span><button type="button" class="news-detail-toggle" aria-expanded="false" aria-controls="surf-bibtex" onclick="toggleNewsDetail(this)"><span class="toggle-triangle" aria-hidden="true"></span>BibTeX</button></span></p>
+<p id="surf-description" hidden>SURF studies how scalarization weights control the traversal speed along the Pareto front by analyzing the Pareto front geometry. Building on this, SURF proposes a geometry-guided weight sampling rule for uniform Pareto-front coverage. We apply the method to multi-objective RL and multi-objective LLM alignment.</p>
+<div id="surf-bibtex" class="bibtex-entry" hidden>
+<button type="button" class="bibtex-toggle bibtex-copy" aria-label="Copy BibTeX to clipboard" aria-live="polite" onclick="copyBibtex(this)">Copy</button>
+<pre><code>@inproceedings{jiang2026surf,
+  author    = {Jiang, Liuyuan and Huang, Chentong and Chen, Lisha},
+  title     = {{SURF}: Steering the Scalarization Weight to Uniformly Traverse the {Pareto} Front},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2026},
+  url       = {https://arxiv.org/abs/2605.20619}
+}</code></pre>
+</div>
 </li>
 </ul>
 <ul>
@@ -195,11 +285,6 @@ If you are interested, please check out more details <a href="https://lisha-chen
 </ul>
 <ul>
 <li><p>Jul 2026: Two papers accepted by <b>Asilomar 2026</b>. Congrats to Chentong Huang and all other collaborators!</p>
-</li>
-</ul>
-<ul>
-<li><p>May 2026: Our new preprint on multi-objective optimization is out.<br />
-    <a href="https://arxiv.org/pdf/2605.20619">SURF: Steering the Scalarization Weight to Uniformly Traverse the Pareto Front</a></p>
 </li>
 </ul>
 <ul>
@@ -354,6 +439,50 @@ Variance Reduction Can Improve Trade-off in Multi-Objective Learning </p>
 
 
     <script>
+        function toggleNewsDetail(button) {
+            var entry = document.getElementById(button.getAttribute('aria-controls'));
+            entry.hidden = !entry.hidden;
+            button.setAttribute('aria-expanded', String(!entry.hidden));
+        }
+
+        async function copyBibtex(button) {
+            var text = button.parentElement.querySelector('code').textContent;
+            var copied = false;
+            button.disabled = true;
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(text);
+                    copied = true;
+                }
+            } catch (error) {
+                copied = false;
+            }
+            if (!copied) {
+                // Fallback for local previews and browsers without the Clipboard API.
+                var textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.setAttribute('readonly', '');
+                textarea.style.cssText = 'position: fixed; opacity: 0; pointer-events: none;';
+                document.body.appendChild(textarea);
+                try {
+                    textarea.select();
+                    copied = document.execCommand('copy');
+                } catch (error) {
+                    copied = false;
+                } finally {
+                    textarea.remove();
+                }
+            }
+            button.disabled = false;
+            button.focus();
+            button.textContent = copied ? 'Copied!' : 'Copy failed';
+            button.setAttribute('aria-label', copied ? 'BibTeX copied to clipboard' : 'Copy failed. Select the BibTeX text and copy manually.');
+            setTimeout(function() {
+                button.textContent = 'Copy';
+                button.setAttribute('aria-label', 'Copy BibTeX to clipboard');
+            }, 2000);
+        }
+
         function toggleOldNews() {
             var oldNews = document.querySelectorAll('.old-news');
             var button = document.getElementById('toggleOldNewsButton');

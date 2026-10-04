@@ -31,50 +31,48 @@ MathJax.Hub.Config({
             display: none;
     }
     .bibtex-toggle {
+        display: inline-flex;
+        align-items: center;
+        box-sizing: border-box;
+        vertical-align: middle;
         background: transparent;
         color: #14003a;
         border: 1px solid #14003a;
         border-radius: 3px;
         padding: 1px 6px;
         font: inherit;
+        font-size: 16px;
+        line-height: 1.5;
+        text-decoration: none;
         cursor: pointer;
     }
     .bibtex-toggle:hover,
     .bibtex-toggle:focus-visible {
         background-color: #14003a;
         color: white;
+        border-color: #14003a;
+        text-decoration: none;
     }
     .news-resources {
         display: inline-flex;
         align-items: center;
         flex-wrap: wrap;
-        gap: 0.4em;
+        gap: 0.6em;
         vertical-align: baseline;
     }
     .news-divider {
         height: 1em;
         width: 0;
-        border-left: 1px solid #0366d6;
+        border-left: 1px solid #14003a;
         flex: 0 0 auto;
     }
     .news-detail-toggle {
-        display: inline-block;
         position: relative;
-        vertical-align: baseline;
-        padding: 0 0 0 12px;
-        border: none;
-        background: transparent;
-        color: #0366d6;
-        font: inherit;
-        cursor: pointer;
-    }
-    .news-detail-toggle:hover {
-        color: #14003a;
-        text-decoration: underline;
+        padding-left: 18px;
     }
     .toggle-triangle {
         position: absolute;
-        left: 0;
+        left: 6px;
         top: 50%;
         width: 0;
         height: 0;
@@ -86,6 +84,10 @@ MathJax.Hub.Config({
     }
     .news-detail-toggle[aria-expanded="true"] .toggle-triangle {
         transform: translateY(-50%) rotate(90deg);
+    }
+    .news-detail-toggle:hover .toggle-triangle,
+    .news-detail-toggle:focus-visible .toggle-triangle {
+        border-left-color: white;
     }
     .bibtex-entry {
         position: relative;
@@ -104,7 +106,6 @@ MathJax.Hub.Config({
         position: absolute;
         top: 8px;
         right: 8px;
-        font-size: 0.85em;
     }
 </style>
 <style>
@@ -148,14 +149,9 @@ MathJax.Hub.Config({
 <a href="index.html">Lisha Chen</a>
 </div>
 </div>
-<div id="main">
-<button class="openbtn" onclick="openNav()">☰</button>
-<!-- Hidden checkbox to track the state -->
-<input type="checkbox" id="navToggle" class="toggle-checkbox">
-<!-- The button linked to the checkbox -->
-<label for="navToggle" class="openbtn">☰</label>
-
-</div>
+<button type="button" id="navToggle" class="openbtn" aria-controls="layout-menu" aria-expanded="false" aria-label="Open navigation menu">
+  <img src="figures/menu.svg" width="24" height="24" alt="" aria-hidden="true" />
+</button>
 </div>
 </div>
 <div id="layout">
@@ -212,6 +208,8 @@ University of Rochester </p>
 
 <!-- <p>Office: 2318, Jonsson Engineering Center <br />
 110 8th Street, Troy, NY, 12180 <br />  -->
+<p> Office: 624, Computer Studies Building<br />
+120 Trustee Rd, Rochester, NY, 14620 <br />
 E-mail: lishachen9577 [AT] gmail.com (<b>preferred</b>);<br /> 
 lisha.chen [AT] rochester.edu
 </p>
@@ -257,7 +255,7 @@ If you are interested, please check out more details <a href="https://lisha-chen
 <ul>
 <li><p>Sep 2026: Our paper on uniform coverage of the Pareto front is accepted by <b>NeurIPS 2026</b>. Congrats to Liuyuan Jiang and Chentong Huang! We will present this work in Atlanta, GA, this December.<br />
     <a href="https://arxiv.org/pdf/2605.20619">SURF: Steering the Scalarization Weight to Uniformly Traverse the Pareto Front</a><br />
-    <span class="news-resources"><a href="files/neurips2026_surf/SURF_slides_NIPS26.pdf">Preliminary slides</a><span class="news-divider" aria-hidden="true"></span><a href="https://github.com/Liuyuan999/MOO_Uniform_PF">Code</a><span class="news-divider" aria-hidden="true"></span><button type="button" class="news-detail-toggle" aria-expanded="false" aria-controls="surf-description" onclick="toggleNewsDetail(this)"><span class="toggle-triangle" aria-hidden="true"></span>Short description</button><span class="news-divider" aria-hidden="true"></span><button type="button" class="news-detail-toggle" aria-expanded="false" aria-controls="surf-bibtex" onclick="toggleNewsDetail(this)"><span class="toggle-triangle" aria-hidden="true"></span>BibTeX</button></span></p>
+    <span class="news-resources"><a class="bibtex-toggle" href="files/neurips2026_surf/SURF_slides_NIPS26.pdf">Preliminary slides</a><span class="news-divider" aria-hidden="true"></span><a class="bibtex-toggle" href="https://github.com/Liuyuan999/MOO_Uniform_PF">Code</a><span class="news-divider" aria-hidden="true"></span><button type="button" class="bibtex-toggle news-detail-toggle" aria-expanded="false" aria-controls="surf-description" onclick="toggleNewsDetail(this)"><span class="toggle-triangle" aria-hidden="true"></span>Short description</button><span class="news-divider" aria-hidden="true"></span><button type="button" class="bibtex-toggle news-detail-toggle" aria-expanded="false" aria-controls="surf-bibtex" onclick="toggleNewsDetail(this)"><span class="toggle-triangle" aria-hidden="true"></span>BibTeX</button></span></p>
 <p id="surf-description" hidden>SURF studies how scalarization weights control the traversal speed along the Pareto front by analyzing the Pareto front geometry. Building on this, SURF proposes a geometry-guided weight sampling rule for uniform Pareto-front coverage. We apply the method to multi-objective RL and multi-objective LLM alignment.</p>
 <div id="surf-bibtex" class="bibtex-entry" hidden>
 <button type="button" class="bibtex-toggle bibtex-copy" aria-label="Copy BibTeX to clipboard" aria-live="polite" onclick="copyBibtex(this)">Copy</button>
@@ -276,7 +274,7 @@ If you are interested, please check out more details <a href="https://lisha-chen
 </li>
 </ul>
 <ul>
-<li><p>Aug 2026: I will present a tutorial at <b>NeurIPS 2026</b>. More information will be available soon.</p>
+<li><p>Aug 2026: I will present a <b>tutorial at NeurIPS 2026</b>. More information will be available soon.</p>
 </li>
 </ul>
 <ul>
@@ -520,37 +518,7 @@ Powered by <a href="https://github.com/szl2/jemdoc-new-design" target="blank">je
 </div> <!-- <div id="layout-content-container"> -->
 </div> <!--- <div id="layout"> --->
 </div> <!--- <div id="main-container"> --->
-<script>
-// Add an event listener to the checkbox
-document.getElementById('navToggle').addEventListener('change', function() {
-      if (this.checked) {
-        openNav();  // Call openNav() when the checkbox is checked
-      } else {
-        closeNav();  // Call closeNav() when the checkbox is unchecked
-      }
-    });    
-function openNav() {
-    document.getElementById('navToggle').checked = true;
-    if (window.innerWidth <= 1200) {
-        document.getElementById("layout-menu").style.width = "200px";
-        document.getElementById("layout-content-container").style.marginLeft = "200.8px";
-        document.getElementById("layout-content-container").style.position = "fixed";
-    }
-}
-function closeNav() {
-    // Uncheck the checkbox to change the button state
-    document.getElementById('navToggle').checked = false;
-    if (window.innerWidth <= 1200) {
-        document.getElementById("layout-menu").style.width = "0";
-        document.getElementById("layout-content-container").style.position = "static";
-        document.getElementById("layout-content-container").style.marginLeft = "0px";
-        setInterval(
-            function(){ location.reload() },
-            500
-        );
-    }
-}
-</script>
+<script src="navigation.js"></script>
 <script type="text/javascript">
 var sc_project=10867279; 
 var sc_invisible=1; 

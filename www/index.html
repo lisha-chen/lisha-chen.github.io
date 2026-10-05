@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<link rel="icon" href="./figures/LCicon.png">
+<link rel="icon" href="./figures/UR-icon.png">
 <link rel="stylesheet" href="main.css" type="text/css" />
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 <!--- <title></title> --->
@@ -57,14 +57,8 @@ MathJax.Hub.Config({
         display: inline-flex;
         align-items: center;
         flex-wrap: wrap;
-        gap: 0.6em;
+        gap: 0.75em;
         vertical-align: baseline;
-    }
-    .news-divider {
-        height: 1em;
-        width: 0;
-        border-left: 1px solid #14003a;
-        flex: 0 0 auto;
     }
     .news-detail-toggle {
         position: relative;
@@ -143,12 +137,15 @@ MathJax.Hub.Config({
 <div id="header">
 <div id="header-icon-text-container">
 <div id="header-icon-container" >
-<a href="index.html"><img src="./figures/LCicon.png" alt="" style="width: 100%; height: 100%; position: center; padding:0px; margin: 0px;"></a>
+<a href="index.html" aria-label="Lisha Chen homepage">
+  <img src="figures/photos/chibi/lisha-web-icon-256.png" width="44" height="44" alt="Lisha Chen" />
+</a>
 </div>
 <div id="header-text-container">
 <a href="index.html">Lisha Chen</a>
 </div>
 </div>
+<img class="header-logo" src="figures/photos/logos/ur_horizontal_white.png" width="1772" height="418" alt="University of Rochester" />
 <button type="button" id="navToggle" class="openbtn" aria-controls="layout-menu" aria-expanded="false" aria-label="Open navigation menu">
   <img src="figures/menu.svg" width="24" height="24" alt="" aria-hidden="true" />
 </button>
@@ -183,7 +180,8 @@ MathJax.Hub.Config({
             var images = ['"figures/photos/scholar.jpg" width="173px" height="250px">',
                 '"figures/photos/100723_6_cut.jpg" width="176px" height="250px">',
                 '"figures/photos/HUST_graduate.jpg" width="177px" height="250px">',
-                '"figures/photos/HUST_lotus2.png" width="177px" height="250px">'
+                '"figures/photos/HUST_lotus2.png" width="177px" height="250px">',
+                '"figures/photos/lisha-chibi-b.png" width="176px" height="250px">'
             ];
             start = '<img src=';
             function printImage() {
@@ -255,7 +253,12 @@ If you are interested, please check out more details <a href="https://lisha-chen
 <ul>
 <li><p>Sep 2026: Our paper on uniform coverage of the Pareto front is accepted by <b>NeurIPS 2026</b>. Congrats to Liuyuan Jiang and Chentong Huang! We will present this work in Atlanta, GA, this December.<br />
     <a href="https://arxiv.org/pdf/2605.20619">SURF: Steering the Scalarization Weight to Uniformly Traverse the Pareto Front</a><br />
-    <span class="news-resources"><a class="bibtex-toggle" href="files/neurips2026_surf/SURF_slides_NIPS26.pdf">Preliminary slides</a><span class="news-divider" aria-hidden="true"></span><a class="bibtex-toggle" href="https://github.com/Liuyuan999/MOO_Uniform_PF">Code</a><span class="news-divider" aria-hidden="true"></span><button type="button" class="bibtex-toggle news-detail-toggle" aria-expanded="false" aria-controls="surf-description" onclick="toggleNewsDetail(this)"><span class="toggle-triangle" aria-hidden="true"></span>Short description</button><span class="news-divider" aria-hidden="true"></span><button type="button" class="bibtex-toggle news-detail-toggle" aria-expanded="false" aria-controls="surf-bibtex" onclick="toggleNewsDetail(this)"><span class="toggle-triangle" aria-hidden="true"></span>BibTeX</button></span></p>
+    <span class="news-resources">
+        <a class="bibtex-toggle" href="files/neurips2026_surf/SURF_slides_NIPS26.pdf">Preliminary slides</a>
+        <a class="bibtex-toggle" href="https://github.com/Liuyuan999/MOO_Uniform_PF">Code</a>
+        <button type="button" class="bibtex-toggle news-detail-toggle" aria-expanded="false" aria-controls="surf-description" onclick="toggleNewsDetail(this)"><span class="toggle-triangle" aria-hidden="true"></span>Short description</button>
+        <button type="button" class="bibtex-toggle news-detail-toggle" aria-expanded="false" aria-controls="surf-bibtex" onclick="toggleNewsDetail(this)"><span class="toggle-triangle" aria-hidden="true"></span>BibTeX</button>
+    </span></p>
 <p id="surf-description" hidden>SURF studies how scalarization weights control the traversal speed along the Pareto front by analyzing the Pareto front geometry. Building on this, SURF proposes a geometry-guided weight sampling rule for uniform Pareto-front coverage. We apply the method to multi-objective RL and multi-objective LLM alignment.</p>
 <div id="surf-bibtex" class="bibtex-entry" hidden>
 <button type="button" class="bibtex-toggle bibtex-copy" aria-label="Copy BibTeX to clipboard" aria-live="polite" onclick="copyBibtex(this)">Copy</button>

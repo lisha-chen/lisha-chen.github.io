@@ -22,6 +22,8 @@ div#header-container {
 }
 
 div#header {
+	--header-control-size: 44px;
+	--header-control-inset: 30px;
 	width: 100vw;
 	height: 70px;
 	background: #14003a;
@@ -38,14 +40,43 @@ div#header-icon-text-container {
 }
 
 div#header-icon-container {
-	height:36px; width:36px;
+	height: var(--header-control-size);
+	width: var(--header-control-size);
 	position: absolute;
-    top: 25px;
-    right: 25px;
-	display:inline-block;
-	vertical-align: middle;
-	background-color: #f5f3f7;
-	border-radius: 10px;
+	top: 50%;
+	right: var(--header-control-inset);
+	transform: translateY(-50%);
+}
+
+#header-icon-container a,
+#header-icon-container img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#header-icon-container img {
+	object-fit: contain;
+}
+
+#header-icon-container a:hover {
+	border-bottom: none;
+}
+
+.header-logo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 200px;
+	max-width: calc(100% - 2 * (var(--header-control-inset) + var(--header-control-size) + 12px));
+	height: auto;
+	max-height: 44px;
+	object-fit: contain;
+	margin: 0;
+	padding: 0;
 }
 
 div#header-text-container {
@@ -542,10 +573,11 @@ div#text-container p{
 .openbtn {
   display: none;
   position: absolute;
-  top: 13px;
-  left: 15px;
-  width: 44px;
-  height: 44px;
+  top: 50%;
+  left: var(--header-control-inset);
+  width: var(--header-control-size);
+  height: var(--header-control-size);
+  transform: translateY(-50%);
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -612,6 +644,11 @@ div#text-container p{
 
 /* Width to center image */
 @media screen and (max-width: 700px) {
+	.header-logo {
+		width: 160px;
+		max-height: 38px;
+	}
+
 	img{
 		margin-right: 0px;
 	}

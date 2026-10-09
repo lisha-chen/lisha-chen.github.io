@@ -25,3 +25,22 @@
     });
     setMenuOpen(false);
 }());
+
+(function () {
+    var iconLink = document.querySelector('#header-icon-container a');
+    var icon = iconLink && iconLink.querySelector('img');
+    if (!icon) {
+        return;
+    }
+
+    var originalSource = icon.getAttribute('src');
+    var smileImage = new Image();
+    smileImage.src = 'figures/photos/chibi/lisha-icon-smile-256.png';
+
+    iconLink.addEventListener('mouseenter', function () {
+        icon.src = smileImage.src;
+    });
+    iconLink.addEventListener('mouseleave', function () {
+        icon.src = originalSource;
+    });
+}());

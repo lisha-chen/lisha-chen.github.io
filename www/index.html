@@ -6,7 +6,8 @@
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="icon" href="./figures/UR-icon.png">
-<link rel="stylesheet" href="main.css?v=20261004-header" type="text/css" />
+<link rel="stylesheet" href="main.css?v=20261009-social" type="text/css" />
+<link rel="stylesheet" href="list-spacing.css?v=20261009-markers" type="text/css" />
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 <!--- <title></title> --->
 <title>Lisha Chen</title>
@@ -21,14 +22,60 @@ MathJax.Hub.Config({
 <!-- End MathJax -->
 <style>
     .news-section {
-            padding: 10px;
-            background-color: #f5f3f7;
-            margin-bottom: 10px;
-            border: 0px solid #ddd;
+        height: 480px;
+        overflow-y: auto;
+        box-sizing: border-box;
+        padding: 0 12px 0 3px;
+        margin-bottom: 10px;
+        scrollbar-width: thin;
+        scrollbar-color: #b6b5bc transparent;
+    }
+    .news-section:focus-visible {
+        outline: 2px solid #8b7cb0;
+        outline-offset: 3px;
+    }
+    .news-table {
+        width: 100%;
+        table-layout: fixed;
+        font-size: 16px;
+    }
+    .news-date-column {
+        width: 100px;
+    }
+    .news-table th,
+    .news-table td {
+        padding: 0 0 18px;
+        border: none;
+        text-align: left;
+        vertical-align: top;
+        line-height: 1.5;
+    }
+    .news-table th {
+        padding-right: 16px;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+    .news-table td {
+        overflow-wrap: anywhere;
+    }
+    .news-table p {
+        margin: 0 0 8px;
+        text-align: left;
+    }
+    .news-table p:last-child {
+        margin-bottom: 0;
+    }
+    .news-table tr:last-child th,
+    .news-table tr:last-child td {
+        padding-bottom: 0;
+    }
+    @media screen and (max-width: 700px) {
+        .news-date-column {
+            width: 88px;
         }
-
-        .old-news {
-            display: none;
+        .news-table th {
+            padding-right: 8px;
+        }
     }
     .bibtex-toggle {
         display: inline-flex;
@@ -85,49 +132,31 @@ MathJax.Hub.Config({
     }
     .bibtex-entry {
         position: relative;
+        box-sizing: border-box;
+        width: 100%;
+        height: 160px;
         margin: 8px 0;
-        padding: 42px 10px 10px;
+        padding: 32px 8px 8px;
         border: 1px solid #ddd;
         background: #f5f3f7;
     }
     .bibtex-entry pre {
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
         margin: 0;
-        white-space: pre-wrap;
-        overflow-wrap: anywhere;
-        font-size: 0.9em;
+        overflow: auto;
+        white-space: pre;
+        overflow-wrap: normal;
+        font-size: small;
     }
     .bibtex-copy {
         position: absolute;
-        top: 8px;
+        top: 6px;
         right: 8px;
-    }
-</style>
-<style>
-    /* Basic button styling */
-    .custom-button {
-        background-color: #f5f3f7; /* Green background */
-        color: #14003a; /* White text */
-        padding: 2px 16px; /* Padding around the text */
-        font-size: 16px; /* Font size */
-        border: none; /* Remove borders */
-        border-radius: 2px; /* Rounded corners */
-        cursor: pointer; /* Pointer cursor on hover */
-        text-align: center; /* Center the text */
-        text-decoration: none; /* Remove underline */
-        display: inline-block; /* Align with other elements */
-        transition: background-color 0.3s ease; /* Smooth transition */
-    }
-
-    /* Change background color on hover */
-    .custom-button:hover {
-        background-color: #14003a;
-        color: white;
-    }
-
-    /* Change background color when the button is active (clicked) */
-    .custom-button:active {
-        background-color: #14003a;
-        color: white;
+        padding: 1px 5px;
+        font-size: small;
+        line-height: 1.35;
     }
 </style>
 </head>
@@ -173,51 +202,45 @@ MathJax.Hub.Config({
 <div id="layout-content-container">
 <div id="layout-content">
 
-    <div id="text-img-container"><div id="img-container">  
-    <a href="https://lisha-chen.github.io/">
-        <script type="text/javascript" language="JavaScript">
-            // Specify the first and last part of the image tag. 
-            var images = ['"figures/photos/scholar.jpg" width="173px" height="250px">',
-                '"figures/photos/100723_6_cut.jpg" width="176px" height="250px">',
-                '"figures/photos/HUST_graduate.jpg" width="177px" height="250px">',
-                '"figures/photos/HUST_lotus2.png" width="177px" height="250px">'
-                //'"figures/photos/lisha-chibi-b.png" width="176px" height="250px">'
+<div id="text-img-container">
+<div id="img-container">
+    <a href="https://lisha-chen.github.io/" aria-label="Lisha Chen homepage">
+        <img id="profile-headshot" src="figures/photos/scholar.jpg" width="177" height="250" alt="Lisha Chen" />
+    </a>
+    <script>
+        (function () {
+            var photos = [
+                'figures/photos/scholar.jpg',
+                'figures/photos/100723_6_cut.jpg',
+                'figures/photos/HUST_graduate.jpg',
+                'figures/photos/HUST_lotus2.png'
             ];
-            start = '<img src=';
-            function printImage() {
-                var rand_int = Math.floor(Math.random() * images.length);
-                document.write(start + images[rand_int]);
-            }
-        </script>
-        <script type="text/javascript" language="JavaScript">
-            printImage();
-        </script>
-    </a>&nbsp;
-</div> 
+            document.getElementById('profile-headshot').src = photos[Math.floor(Math.random() * photos.length)];
+        }());
+    </script>
+</div>
 
 
 <div id="text-container"> 
- 
-<p><h3>Lisha Chen</h3> 
-Assistant Professor<br />
+<h3>Lisha Chen</h3>
+<p>Assistant Professor<br />
 Department of Electrical and Computer Engineering <br />
 Goergen Insitute for Data Science and Artificial Intelligence <br />
 University of Rochester </p>
 
 <!-- <p>Office: 2318, Jonsson Engineering Center <br />
 110 8th Street, Troy, NY, 12180 <br />  -->
-<p> Office: 624, Computer Studies Building<br />
-120 Trustee Rd, Rochester, NY, 14620 <br />
-E-mail: lishachen9577 [AT] gmail.com (<b>preferred</b>);<br /> 
+<p> Office: 624 Computer Studies Building, Rochester, NY, 14620 <br />
+E-mail: lishachen9577 [AT] gmail.com (<b>preferred</b>); <br />
 lisha.chen [AT] rochester.edu
 </p>
 
-<p><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <a href="https://scholar.google.com/citations?user=fh73S6gAAAAJ&hl=en"><i class="ai ai-google-scholar ai-2x" style="font-size:2.5em; color:#14003a"></i></a>&nbsp;&nbsp;&nbsp;
+<p class="profile-social-links"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <a href="https://scholar.google.com/citations?user=fh73S6gAAAAJ&hl=en"><i class="ai ai-google-scholar ai-2x"></i></a>&nbsp;&nbsp;&nbsp;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <a href="https://www.linkedin.com/in/lisha-chen-ur/"><i class="fa-brands fa-linkedin" style="font-size:2.5em; color:#14003a"></i></a>&nbsp;&nbsp;&nbsp;
+    <a href="https://www.linkedin.com/in/lisha-chen-ur/"><i class="fa-brands fa-linkedin"></i></a>&nbsp;&nbsp;&nbsp;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <a href="https://x.com/LishaCh95"><i class="fa-brands fa-x-twitter" style="font-size:2.5em; color:#14003a"></i></a>&nbsp;&nbsp;&nbsp;
+    <a href="https://x.com/LishaCh95"><i class="fa-brands fa-x-twitter"></i></a>&nbsp;&nbsp;&nbsp;
 </p>
 </div></div>
 
@@ -226,7 +249,7 @@ lisha.chen [AT] rochester.edu
 <h2>About me</h2>
 <p>I am an Assistant Professor in the Department of Electrical and Computer Engineering at the <a href="https://www.hajim.rochester.edu/ece/">University of Rochester</a>. I did my Ph.D. at Rensselaer Polytechnic Institute (RPI), fortunate to be advised by <a href="https://chentianyi1991.github.io/">Prof. Tianyi Chen</a> (now at Cornell).
 I obtained my M.S. in Electrical Engineering from RPI in 2021, and my B.S. from Huazhong University of Science and Technology (HUST) in 2017.<br /><br />
-My research lies at the intersection of machine learning, optimization, and statistical signal/image processing, with a current focus on the theory and applications of multi-objective and multi-level optimization and learning. Motivated by real-world scientific and engineering systems, I develop foundations to address problems involving competing objectives, resource constraints, multiple data modalities, heterogeneous users and devices, and hierarchical decision-making under uncertain environments. I aim to connect theoretical insights with practical needs.
+My research lies at the intersection of machine learning, optimization, and statistical signal/image processing, with a current focus on the theory and applications of multi-objective and multi-level optimization and learning. Motivated by real-world scientific and engineering systems, I develop foundations to address problems involving competing objectives, resource constraints, multiple data modalities, heterogeneous users and devices, and hierarchical/multi-criteria decision-making under uncertain environments. I aim to connect theoretical insights with practical needs.
 </p>  
 
 <div style="width: 98%; padding: 8px; margin: 0 auto; background-color: rgb(255, 232, 200);">
@@ -236,208 +259,273 @@ If you are interested, please check out more details <a href="https://lisha-chen
 <br />
 </div>
 
-<h2>News</h2>
-<div class="news-section">
-<ul>
-<li><p>Nov 2026: I will give a talk at the University of Illinois Urbana-Champaign (UIUC) Machine Learning Seminar. Looking forward to connecting and engaging in discussions!</p>
-</li>
-</ul>
-<ul>
-<li><p>Oct 2026: Congrats to Liuyuan Jiang on receiving the <a href="https://signalprocessingsociety.org/community-involvement/sps-scholarship-program">2026 IEEE Signal Processing Society (SPS) Scholarship</a>!</p>
-</li>
-</ul>
-<ul>
-<li><p>Oct 2026: I will attend <a href="https://www.asilomarsscconf.org/">Asilomar 2026</a> at Pacific Grove, CA. Looking forward to meeting old and new friends there.</p>
-</li>
-</ul>
-<ul>
-<li><p>Sep 2026: Our paper on uniform coverage of the Pareto front is accepted by <b>NeurIPS 2026</b>. Congrats to Liuyuan Jiang and Chentong Huang! We will present this work in Atlanta, GA, this December.<br />
-    <a href="https://arxiv.org/pdf/2605.20619">SURF: Steering the Scalarization Weight to Uniformly Traverse the Pareto Front</a><br />
-    <span class="news-resources">
+<h2 id="news-heading">News</h2>
+<div class="news-section" role="region" aria-labelledby="news-heading" tabindex="0">
+<table class="news-table" aria-labelledby="news-heading">
+  <colgroup>
+    <col class="news-date-column" />
+    <col />
+  </colgroup>
+  <tbody>
+    <tr>
+      <th scope="row"><time datetime="2026-11">Nov 2026</time></th>
+      <td>
+        <p>I will give a talk at the University of Illinois Urbana-Champaign (UIUC) Machine Learning Seminar. Looking forward to connecting and engaging in discussions!</p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2026-10">Oct 2026</time></th>
+      <td>
+        <p>Congrats to Liuyuan Jiang on receiving the <a href="https://signalprocessingsociety.org/community-involvement/sps-scholarship-program">2026 IEEE Signal Processing Society (SPS) Scholarship</a>!</p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2026-10">Oct 2026</time></th>
+      <td>
+        <p>I will attend <a href="https://www.asilomarsscconf.org/">Asilomar 2026</a> at Pacific Grove, CA. Looking forward to meeting old and new friends there.</p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2026-09">Sep 2026</time></th>
+      <td>
+        <p>Our paper on uniform coverage of the Pareto front is accepted by <b>NeurIPS 2026</b>. Congrats to Liuyuan Jiang and Chentong Huang! We will present this work in Atlanta, GA, this December.<br />
+        <a href="https://arxiv.org/pdf/2605.20619">SURF: Steering the Scalarization Weight to Uniformly Traverse the Pareto Front</a><br />
+        <span class="news-resources">
         <a class="bibtex-toggle" href="files/neurips2026_surf/SURF_slides_NIPS26.pdf">Preliminary slides</a>
         <a class="bibtex-toggle" href="https://github.com/Liuyuan999/MOO_Uniform_PF">Code</a>
         <button type="button" class="bibtex-toggle news-detail-toggle" aria-expanded="false" aria-controls="surf-description" onclick="toggleNewsDetail(this)"><span class="toggle-triangle" aria-hidden="true"></span>Short description</button>
         <button type="button" class="bibtex-toggle news-detail-toggle" aria-expanded="false" aria-controls="surf-bibtex" onclick="toggleNewsDetail(this)"><span class="toggle-triangle" aria-hidden="true"></span>BibTeX</button>
-    </span></p>
-<p id="surf-description" hidden>SURF studies how scalarization weights control the traversal speed along the Pareto front by analyzing the Pareto front geometry. Building on this, SURF proposes a geometry-guided weight sampling rule for uniform Pareto-front coverage. We apply the method to multi-objective RL and multi-objective LLM alignment.</p>
-<div id="surf-bibtex" class="bibtex-entry" hidden>
-<button type="button" class="bibtex-toggle bibtex-copy" aria-label="Copy BibTeX to clipboard" aria-live="polite" onclick="copyBibtex(this)">Copy</button>
-<pre><code>@inproceedings{jiang2026surf,
+        </span></p>
+        <p id="surf-description" hidden>SURF studies how scalarization weights control the traversal speed along the Pareto front by analyzing the Pareto front geometry. Building on this, SURF proposes a geometry-guided weight sampling rule for uniform Pareto-front coverage. We apply the method to multi-objective RL and multi-objective LLM alignment.</p>
+        <div id="surf-bibtex" class="bibtex-entry" hidden>
+        <button type="button" class="bibtex-toggle bibtex-copy" aria-label="Copy BibTeX to clipboard" aria-live="polite" onclick="copyBibtex(this)">Copy</button>
+        <pre><code>@inproceedings{jiang2026surf,
   author    = {Jiang, Liuyuan and Huang, Chentong and Chen, Lisha},
   title     = {{SURF}: Steering the Scalarization Weight to Uniformly Traverse the {Pareto} Front},
   booktitle = {Advances in Neural Information Processing Systems},
   year      = {2026},
   url       = {https://arxiv.org/abs/2605.20619}
 }</code></pre>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2026-09">Sep 2026</time></th>
+      <td>
+        <p>Happy to give a talk at OSU ECE department seminar on our recent works for preference-guided multi-objective learning.</p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2026-08">Aug 2026</time></th>
+      <td>
+        <p>I will present a <b>tutorial at NeurIPS 2026</b>. More information will be available soon.</p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2026-08">Aug 2026</time></th>
+      <td>
+        <p>Grateful to receive the support from <a href="https://thinkingmachines.ai/news/tinker-research-and-teaching-grants/">Tinker Research Grant</a> and <a href="https://www.rochester.edu/coe/">COE</a>.</p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2026-07">Jul 2026</time></th>
+      <td>
+        <p>One paper accepted by <b>Asilomar 2026</b>. Congrats to Chentong Huang!</p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2026-02">Feb 2026</time></th>
+      <td>
+        <p>One paper accepted by <b>ICASSP 2026 as oral</b>. Congrats to Liuyuan Jiang! <br />
+        <a href="https://ieeexplore.ieee.org/abstract/document/11461970">BIRQ: Bi-level self-labeling random quantization for self-supervised speech recognition</a></p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2025-12">Dec 2025</time></th>
+      <td>
+        <p>Grateful to receive the support from <a href="https://www.empireai.edu/">Empire AI Beta</a>!</p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2025-11">Nov 2025</time></th>
+      <td>
+        <p>A new preprint on bilevel optimization is out. <br />
+        <a href="https://arxiv.org/pdf/2511.16796">Efficient Penalty-Based Bilevel Methods: Improved Analysis, Novel Updates, and Flatness Condition</a></p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2025-09">Sep 2025</time></th>
+      <td>
+        <p>Two papers accepted by <b>NeurIPS 2025</b>. Congrats to Liuyuan Jiang and AFM Saif! <br />
+        <a href="https://arxiv.org/pdf/2507.20400">Beyond Value Functions: Single-loop Bilevel Optimization under Flatness Conditions</a></p>
+        <p><a href="https://arxiv.org/pdf/2508.09228">Objective Soups: Multilingual Multi-Task Modeling for Speech Processing</a></p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2025-05">May 2025</time></th>
+      <td>
+        <p>Our paper is accepted by <b>ICML 2025 as spotlight</b>. <br />
+        <a href="https://openreview.net/pdf?id=PUzNwYmb3l">Efficient First-Order Optimization on the Pareto Set for Multi-Objective Learning under Preference Guidance</a></p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2025-03">Mar 2025</time></th>
+      <td>
+        <p>I have successfully defended my thesis. Sincere thanks to my committee members for their guidance and support. </p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2024-12">Dec 2024</time></th>
+      <td>
+        <p>Our paper is accepted by <b>IEEE Transactions on Audio, Speech and Language Processing</b>. <br />
+        <a href="https://ieeexplore.ieee.org/document/10810454">
+        Bilevel Joint Unsupervised and Supervised Training for Automatic Speech Recognition</a></p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2024-10">Oct 2024</time></th>
+      <td>
+        <p>Honored and grateful to receive the IEEE Signal Processing Society (SPS) scholarship.</p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2024-09">Sep 2024</time></th>
+      <td>
+        <p>Our paper is accepted by <b>NeurIPS 2024</b>. <br />
+        <a href="https://arxiv.org/pdf/2412.01773">FERERO: A Flexible Framework for Preference-Guided Multi-Objective Learning</a></p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2024-07">Jul 2024</time></th>
+      <td>
+        <p>I co-organize a special session on "Advances in Optimization for Machine Learning and Signal Processing" at <a href="https://2024.ieeesam.org/special-session/#ss6">IEEE SAM 2024 Workshop</a> with Prof. Tianyi Chen and Prof. Kaiyi Ji. </p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2024-06">Jun 2024</time></th>
+      <td>
+        <p>Our paper is accepted by <b>Interspeech 2024</b>. <br />
+            <a href="https://www.isca-archive.org/interspeech_2024/saif24_interspeech.pdf">M2ASR: Multilingual Multi-task Automatic Speech Recognition via Multi-objective Optimization</a></p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2024-05">May 2024</time></th>
+      <td>
+        <p>Our paper is accepted by <b>JMLR</b>. <br />
+            <a href="https://jmlr.org/papers/volume25/23-1287/23-1287.pdf">Three-Way Trade-Off in Multi-Objective Learning: Optimization, Generalization and Conflict-Avoidance </a></p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2024-04">Apr 2024</time></th>
+      <td>
+        <p>I present a tutorial at ICASSP 2024 together with Prof. Tianyi Chen and Dr. Xiaodong Cui. </p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2024-02">Feb 2024</time></th>
+      <td>
+        <p>I present a tutorial at AAAI 2024 together with Prof. Tianyi Chen and Prof. Zhuoran Yang. </p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2024-02">Feb 2024</time></th>
+      <td>
+        <p>I am invited to give a talk at the University of Rochester ECE department seminar. </p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2023-12">Dec 2023</time></th>
+      <td>
+        <p>Our paper is accepted by <b>ICASSP 2024</b>.<br />
+        Variance Reduction Can Improve Trade-off in Multi-Objective Learning </p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2023-12">Dec 2023</time></th>
+      <td>
+        <p>Our <a href="https://arxiv.org/pdf/2305.20057.pdf">NeurIPS23 paper</a> is accepted by <a href="https://cpal.cc/spotlight_track/">CPAL Spotlight Track</a>. </p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2023-11">Nov 2023</time></th>
+      <td>
+        <p>I am honored to receive the <a href="https://signalprocessingsociety.org/newsletter/2023/11/congratulations-inaugural-sps-scholarship-recipients">IEEE Signal Processing Society (SPS) scholarship</a>.</p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2023-10">Oct 2023</time></th>
+      <td>
+        <p>I am honored to receive the Rensselaer's Founders Award of Excellence.</p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2023-09">Sep 2023</time></th>
+      <td>
+        <p>Our paper is accepted by <b>NeurIPS 2023</b>. Check out the preprint:<br />
+        <a href="https://arxiv.org/pdf/2305.20057.pdf">Three-Way Trade-Off in Multi-Objective Learning: Optimization, Generalization and Conflict-Avoidance </a><br />
+          I will present this work at: <br />
+          - <a href="https://www.simonsfoundation.org/event/mathematical-and-scientific-foundations-of-deep-learning-annual-meeting-2023/">
+          MoDL Meeting</a>, New York City, NY &nbsp;&nbsp;&nbsp;
+          - <a href="https://www.cs.rochester.edu/u/shossei2/eagl2023website/index.html#about">EaGL Workshop</a>, Rochester, NY<br />
+          - <a href="https://www.asilomarsscconf.org/">
+          Asilomar</a>, Pacific Grove, CA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          - <a href="https://nips.cc/Conferences/2023/Dates">
+          NeurIPS</a>, New Orleans, LA<br />
+          Looking forward to meeting you there!
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2023-02">Feb 2023</time></th>
+      <td>
+        <p>Our paper is accepted by <b>ICASSP 2023</b><br />
+        <a href="https://ieeexplore.ieee.org/abstract/document/10097096">A Nested Ensemble Method to Bilevel Machine Learning </a></p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2023-02">Feb 2023</time></th>
+      <td>
+        <p>I am honored to be selected as Top Reviewer for AISTATS 2023. </p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2023-01">Jan 2023</time></th>
+      <td>
+        <p>Our monograph with Prof. Osvaldo Simeone's group is published in <a href="https://www.nowpublishers.com/article/Details/SIG-115"><b>Foundations and Trends in Signal Processing</b></a><br />
+        <a href="https://arxiv.org/pdf/2210.02515.pdf">Learning with Limited Samples -- Meta-Learning and Applications to Communication Systems </a></p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2022-09">Sep 2022</time></th>
+      <td>
+        <p>Our paper is accepted by <b>NeurIPS 2022</b><br />
+        <a href="https://arxiv.org/pdf/2206.13482.pdf">Understanding Benign Overfitting in Gradient-Based Meta Learning </a></p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2022-05">May 2022</time></th>
+      <td>
+        <p>Our paper is accepted by <b>ICML 2022</b><br />
+        <a href="https://arxiv.org/pdf/2206.03996.pdf">Sharp-MAML: Sharpness-Aware Model-Agnostic Meta Learning </a></p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2022-01">Jan 2022</time></th>
+      <td>
+        <p>Our paper is accepted by <b>AISTATS 2022</b><br />
+        <a href="https://arxiv.org/pdf/2203.03059.pdf">Is Bayesian Model-Agnostic Meta Learning Better than Model-Agnostic Meta Learning, Provably? </a></p>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><time datetime="2021-12">Dec 2021</time></th>
+      <td>
+        <p>I am honored to receive the inaugural <a href="https://ecse.rpi.edu/news/ecse-graduate-students-receive-soes-belsky-award-computational-sciences-and-engineering">
+          Belsky Award for Computational Sciences and Engineering</a> from RPI. </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
 </div>
-</li>
-</ul>
-<ul>
-<li><p>Sep 2026: Happy to give a talk at OSU ECE department seminar on our recent works for preference-guided multi-objective learning.</p>
-</li>
-</ul>
-<ul>
-<li><p>Aug 2026: I will present a <b>tutorial at NeurIPS 2026</b>. More information will be available soon.</p>
-</li>
-</ul>
-<ul>
-<li><p>Aug 2026: Grateful to receive the support from <a href="https://thinkingmachines.ai/news/tinker-research-and-teaching-grants/">Tinker Research Grant</a> and <a href="https://www.rochester.edu/coe/">COE</a>.</p>
-</li>
-</ul>
-<ul>
-<li><p>Jul 2026: Two papers accepted by <b>Asilomar 2026</b>. Congrats to Chentong Huang and all other collaborators!</p>
-</li>
-</ul>
-<ul>
-<li><p>Feb 2026: One paper accepted by <b>ICASSP 2026 as oral</b>. Congrats to Liuyuan Jiang! <br />
-<a href="https://ieeexplore.ieee.org/abstract/document/11461970">BIRQ: Bi-level self-labeling random quantization for self-supervised speech recognition</a></p>
-</li>
-</ul>
-<ul>
-<li><p>Dec 2025: Grateful to receive the support from <a href="https://www.empireai.edu/">Empire AI Beta</a>!</p>    
-</li>
-</ul>   
-<ul>
-<li><p>Nov 2025: A new preprint on bilevel optimization is out. <br />
-<a href="https://arxiv.org/pdf/2511.16796">Efficient Penalty-Based Bilevel Methods: Improved Analysis, Novel Updates, and Flatness Condition</a></p> 
-</li>
-</ul>   
-<ul>
-<li><p>Sep 2025: Two papers accepted by <b>NeurIPS 2025</b>. Congrats to Liuyuan Jiang and AFM Saif! <br />
-<a href="https://arxiv.org/pdf/2507.20400">Beyond Value Functions: Single-loop Bilevel Optimization under Flatness Conditions</a></p>
-<a href="https://arxiv.org/pdf/2508.09228">Objective Soups: Multilingual Multi-Task Modeling for Speech Processing</a></p>
-</li>
-</ul>    
-<ul>
-<li><p>May 2025: Our paper is accepted by <b>ICML 2025 as spotlight</b>. <br />
-<a href="https://openreview.net/pdf?id=PUzNwYmb3l">Efficient First-Order Optimization on the Pareto Set for Multi-Objective Learning under Preference Guidance</a></p>
-</li>
-</ul>
-  
-<ul>
-<li><p>Sep 2024: Our paper is accepted by <b>NeurIPS 2024</b>. <br />
-<a href="https://arxiv.org/pdf/2412.01773">FERERO: A Flexible Framework for Preference-Guided Multi-Objective Learning</a></p>
-</li>
-</ul>
-<ul>
-<li><p>May 2024: Our paper is accepted by <b>JMLR</b>. <br />
-    <a href="https://jmlr.org/papers/volume25/23-1287/23-1287.pdf">Three-Way Trade-Off in Multi-Objective Learning: Optimization, Generalization and Conflict-Avoidance </a></p>
-</li>
-</ul>
-</div>
-
-
-
-
-<button id="toggleOldNewsButton" onclick="toggleOldNews()" class="custom-button">Old News</button>
-
-<div class="news-section old-news">
-<ul>
-<li><p>Mar 2025: I have successfully defended my thesis. Sincere thanks to my committee members for their guidance and support. </p>
-</li>
-</ul>
-<ul>
-<li><p>Dec 2024: Our paper is accepted by <b>IEEE Transactions on Audio, Speech and Language Processing</b>. <br />
-<a href="https://ieeexplore.ieee.org/document/10810454">   
-Bilevel Joint Unsupervised and Supervised Training for Automatic Speech Recognition</a></p>
-</li>
-</ul>
-<ul>
-<li><p>Oct 2024: Honored and grateful to receive the IEEE Signal Processing Society (SPS) scholarship.</p>
-</li>
-</ul>      
-<ul>
-<li><p>Jul 2024: I co-organize a special session on "Advances in Optimization for Machine Learning and Signal Processing" at <a href="https://2024.ieeesam.org/special-session/#ss6">IEEE SAM 2024 Workshop</a> with Prof. Tianyi Chen and Prof. Kaiyi Ji. </p>
-</li>
-</ul>
-<ul>
-<li><p>Jun 2024: Our paper is accepted by <b>Interspeech 2024</b>. <br />
-    <a href="https://www.isca-archive.org/interspeech_2024/saif24_interspeech.pdf">M2ASR: Multilingual Multi-task Automatic Speech Recognition via Multi-objective Optimization</a></p>
-</li>
-</ul>    
-<ul>
-<li><p>Apr 2024: I present a tutorial at ICASSP 2024 together with Prof. Tianyi Chen and Dr. Xiaodong Cui. </p>
-</li>
-</ul>
-<ul>
-<li><p>Feb 2024: I present a tutorial at AAAI 2024 together with Prof. Tianyi Chen and Prof. Zhuoran Yang. </p>
-</li>
-</ul>
-<ul>
-<li><p>Feb 2024: I am invited to give a talk at the University of Rochester ECE department seminar. </p>
-</li>
-</ul>    
-<ul>
-<li><p>Dec 2023: Our paper is accepted by <b>ICASSP 2024</b>.<br />
-Variance Reduction Can Improve Trade-off in Multi-Objective Learning </p>
-</li>
-</ul>
-<ul>
-<li><p>Dec 2023: Our <a href="https://arxiv.org/pdf/2305.20057.pdf">NeurIPS23 paper</a> is accepted by <a href="https://cpal.cc/spotlight_track/">CPAL Spotlight Track</a>. </p>
-</li>
-</ul>
-
-
-<ul>
-<li><p>Nov 2023: I am honored to receive the <a href="https://signalprocessingsociety.org/newsletter/2023/11/congratulations-inaugural-sps-scholarship-recipients">IEEE Signal Processing Society (SPS) scholarship</a>.</p>
-</li>
-</ul>
-<ul>
-<li><p>Oct 2023: I am honored to receive the Rensselaer's Founders Award of Excellence.</p>
-</li>
-</ul>
-<ul>
-<li><p>Sep 2023: Our paper is accepted by <b>NeurIPS 2023</b>. Check out the preprint:<br />
-<a href="https://arxiv.org/pdf/2305.20057.pdf">Three-Way Trade-Off in Multi-Objective Learning: Optimization, Generalization and Conflict-Avoidance </a><br />
-  I will present this work at: <br /> 
-  - <a href="https://www.simonsfoundation.org/event/mathematical-and-scientific-foundations-of-deep-learning-annual-meeting-2023/">
-  MoDL Meeting</a>, New York City, NY &nbsp;&nbsp;&nbsp;
-  - <a href="https://www.cs.rochester.edu/u/shossei2/eagl2023website/index.html#about">EaGL Workshop</a>, Rochester, NY<br />
-  - <a href="https://www.asilomarsscconf.org/">
-  Asilomar</a>, Pacific Grove, CA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  - <a href="https://nips.cc/Conferences/2023/Dates">
-  NeurIPS</a>, New Orleans, LA<br />
-  Looking forward to meeting you there!
-</p>
-</li>
-</ul>
-<ul>
-<li><p>Feb 2023: Our paper is accepted by <b>ICASSP 2023</b><br />
-<a href="https://ieeexplore.ieee.org/abstract/document/10097096">A Nested Ensemble Method to Bilevel Machine Learning </a></p>
-</li>
-</ul>
-<ul>
-<li><p>Feb 2023: I am honored to be selected as Top Reviewer for AISTATS 2023. </p>
-</li>
-</ul>
-<ul>
-<li><p>Jan 2023: Our monograph with Prof. Osvaldo Simeone's group is published in <a href="https://www.nowpublishers.com/article/Details/SIG-115"><b>Foundations and Trends in Signal Processing</b></a><br />
-<a href="https://arxiv.org/pdf/2210.02515.pdf">Learning with Limited Samples -- Meta-Learning and Applications to Communication Systems </a></p>
-</li>
-</ul>
-<ul>
-<li><p>Sep 2022: Our paper is accepted by <b>NeurIPS 2022</b><br />
-<a href="https://arxiv.org/pdf/2206.13482.pdf">Understanding Benign Overfitting in Gradient-Based Meta Learning </a></p>
-</li>
-</ul>
-<ul>
-<li><p>May 2022: Our paper is accepted by <b>ICML 2022</b><br />
-<a href="https://arxiv.org/pdf/2206.03996.pdf">Sharp-MAML: Sharpness-Aware Model-Agnostic Meta Learning </a></p>
-</li>
-</ul>
-<ul>
-<li><p>Jan 2022: Our paper is accepted by <b>AISTATS 2022</b><br />
-<a href="https://arxiv.org/pdf/2203.03059.pdf">Is Bayesian Model-Agnostic Meta Learning Better than Model-Agnostic Meta Learning, Provably? </a></p>
-</li>
-</ul>
-<ul>
-<li><p>Dec 2021: I am honored to receive the inaugural <a href="https://ecse.rpi.edu/news/ecse-graduate-students-receive-soes-belsky-award-computational-sciences-and-engineering">
-  Belsky Award for Computational Sciences and Engineering</a> from RPI. </p>
-</li>
-</ul>
-</div>
-
-
 
     <script>
         function toggleNewsDetail(button) {
@@ -483,25 +571,6 @@ Variance Reduction Can Improve Trade-off in Multi-Objective Learning </p>
                 button.setAttribute('aria-label', 'Copy BibTeX to clipboard');
             }, 2000);
         }
-
-        function toggleOldNews() {
-            var oldNews = document.querySelectorAll('.old-news');
-            var button = document.getElementById('toggleOldNewsButton');
-            
-            oldNews.forEach(function(news) {
-                if (news.style.display === "none" || news.style.display === "") {
-                    news.style.display = "block";
-                } else {
-                    news.style.display = "none";
-                }
-            });
-            
-            if (button.textContent === "Show Old News") {
-                button.textContent = "Old News";
-            } else {
-                button.textContent = "Old News";
-            }
-        }
     </script>
 
 <!--
@@ -514,7 +583,7 @@ Variance Reduction Can Improve Trade-off in Multi-Objective Learning </p>
 <div id="footer-text">
 <!-- Last edited  on Oct 23<sup>th</sup> 2023. </br> 
 -->
-Powered by <a href="https://github.com/szl2/jemdoc-new-design" target="blank">jemdoc + new design</a>.
+&copy; 2026 Lisha Chen. Powered by <a href="https://github.com/szl2/jemdoc-new-design" target="blank">jemdoc + new design</a>.
 </div> <!-- <div id="footer-text"> -->
 </div> <!-- <div id="footer"> -->
 </div> <!-- <div id="footer-container"> -->

@@ -1,0 +1,21 @@
+/* Place the left edge of first-level bullet markers 3px inside the content edge. */
+#layout-content > ul {
+    margin-inline: 0;
+    padding-inline-start: 3px;
+    list-style: none;
+}
+
+#layout-content > ul > li {
+    position: relative;
+    padding-inline-start: 16px;
+}
+
+#layout-content > ul > li::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0.6em;
+    inline-size: 5px;
+    block-size: 5px;
+    background-color: currentColor;
+}

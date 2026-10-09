@@ -128,12 +128,7 @@ div#layout-menu {
 	position: fixed;
 	overflow: scroll;
 	background: #f0ecf1;
-	scrollbar-color: #b6b5bc #f0ecf1;
 	border-right: 0.8px solid #b8cde9;
-}
-
-#layout-menu::-webkit-scrollbar-corner {
-	background: #f0ecf1;
 }
 
 #layout-menu a {

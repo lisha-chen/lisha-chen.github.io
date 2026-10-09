@@ -1,0 +1,16 @@
+/* Match both sidebar scrollbar tracks and their corner to the sidebar background. */
+#layout-menu {
+    background-color: #f0ecf1;
+    scrollbar-color: #b6b5bc #f0ecf1;
+}
+
+#layout-menu::-webkit-scrollbar,
+#layout-menu::-webkit-scrollbar-track,
+#layout-menu::-webkit-scrollbar-button,
+#layout-menu::-webkit-scrollbar-corner {
+    background-color: #f0ecf1;
+}
+
+#layout-menu::-webkit-scrollbar-thumb {
+    background-color: #b6b5bc;
+}

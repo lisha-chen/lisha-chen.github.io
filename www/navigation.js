@@ -37,10 +37,14 @@
     var smileImage = new Image();
     smileImage.src = 'figures/photos/chibi/lisha-icon-smile-256.png';
 
-    iconLink.addEventListener('mouseenter', function () {
-        icon.src = smileImage.src;
-    });
-    iconLink.addEventListener('mouseleave', function () {
-        icon.src = originalSource;
-    });
+    function updateIcon() {
+        icon.src = iconLink.matches(':hover') || document.activeElement === iconLink
+            ? smileImage.src
+            : originalSource;
+    }
+
+    iconLink.addEventListener('mouseenter', updateIcon);
+    iconLink.addEventListener('mouseleave', updateIcon);
+    iconLink.addEventListener('focus', updateIcon);
+    iconLink.addEventListener('blur', updateIcon);
 }());

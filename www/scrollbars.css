@@ -1,0 +1,78 @@
+/* Shared scrollbars for News, BibTeX, the sidebar, and the page. */
+:root {
+    --scrollbar-size: 8px;
+    --scrollbar-thumb: #b6b5bc;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+#layout-menu {
+    --scrollbar-track: #f0ecf1;
+    background-color: var(--scrollbar-track);
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Standard scrollbar properties override the arrow styling in Chromium. */
+@supports selector(::-webkit-scrollbar) {
+    *,
+    #layout-menu {
+        scrollbar-width: auto;
+        scrollbar-color: auto;
+    }
+}
+
+::-webkit-scrollbar {
+    width: var(--scrollbar-size);
+    height: var(--scrollbar-size);
+    background-color: var(--scrollbar-track, transparent);
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+    background-color: var(--scrollbar-track, transparent);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 4px;
+}
+
+/* Reserve arrow space so hovering does not change the scrollable viewport. */
+::-webkit-scrollbar-button {
+    appearance: none;
+    display: block;
+    width: var(--scrollbar-size);
+    height: var(--scrollbar-size);
+    border: 0;
+    background: var(--scrollbar-track, transparent) none center / 8px 8px no-repeat;
+    transition: none;
+}
+
+::-webkit-scrollbar-button:vertical:start:increment,
+::-webkit-scrollbar-button:vertical:end:decrement,
+::-webkit-scrollbar-button:horizontal:start:increment,
+::-webkit-scrollbar-button:horizontal:end:decrement {
+    display: none;
+}
+
+/* Each axis needs both pointer presence and actual overflow; no fade on exit. */
+@media (hover: hover) {
+    .scrollbar-hover-y::-webkit-scrollbar-button:vertical:decrement {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23b6b5bc' d='M1 6 4 2 7 6Z'/%3E%3C/svg%3E");
+    }
+
+    .scrollbar-hover-y::-webkit-scrollbar-button:vertical:increment {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23b6b5bc' d='M1 2 4 6 7 2Z'/%3E%3C/svg%3E");
+    }
+
+    .scrollbar-hover-x::-webkit-scrollbar-button:horizontal:decrement {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23b6b5bc' d='M6 1 2 4 6 7Z'/%3E%3C/svg%3E");
+    }
+
+    .scrollbar-hover-x::-webkit-scrollbar-button:horizontal:increment {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23b6b5bc' d='M2 1 6 4 2 7Z'/%3E%3C/svg%3E");
+    }
+}

@@ -86,7 +86,7 @@ div#header-icon-container {
 }
 
 div#header-text-container {
-	padding-left: 10px;
+	padding-left: 0;
 	height: 40px;
 	display:inline-block;
 	color: #f5f3f7;

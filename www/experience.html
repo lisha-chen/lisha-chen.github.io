@@ -21,6 +21,72 @@ MathJax.Hub.Config({
 });
 </script>
 <!-- End MathJax -->
+<style>
+.seminar-resources {
+    margin-bottom: 0.8em;
+}
+.seminar-resources summary {
+    width: fit-content;
+    max-width: 100%;
+    box-sizing: border-box;
+    list-style-position: inside;
+    color: #14003a;
+    border: 1px solid #14003a;
+    border-radius: 3px;
+    padding: 1px 6px;
+    font-size: 16px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+.seminar-resources summary:hover,
+.seminar-resources summary:focus-visible {
+    background-color: #14003a;
+    color: white;
+}
+.seminar-table-scroll {
+    margin-top: 0.5em;
+    overflow-x: auto;
+}
+.seminar-table-scroll table {
+    width: 100%;
+    max-width: 100%;
+}
+.seminar-table-scroll th,
+.seminar-table-scroll td {
+    padding: 0.45em 0.55em;
+    border: 1px solid #d1d5da;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+.seminar-table-scroll th {
+    background-color: #f0ecf1;
+}
+.seminar-table-scroll th:first-child {
+    width: 17%;
+    white-space: nowrap;
+}
+.seminar-table-scroll th:nth-child(3) {
+    width: 8%;
+}
+.seminar-table-scroll th:nth-child(4) {
+    width: 43%;
+}
+.seminar-table-scroll time {
+    white-space: nowrap;
+}
+@media (max-width: 600px) {
+    .seminar-table-scroll th,
+    .seminar-table-scroll td {
+        padding-inline: 0.35em;
+        font-size: 0.875rem;
+    }
+    .seminar-table-scroll time {
+        white-space: normal;
+    }
+}
+</style>
 </head>
 <body>
 <div id="main-container">
@@ -86,8 +152,63 @@ MathJax.Hub.Config({
 </ul>
 
 
-<h2>Workshop/session organizer</h2>
+<h2>Workshop/session/seminar organizer</h2>
 <ul role="list">
+<li><p>UR ECE department seminar organizer, 2025-present</p>
+  <details class="seminar-resources">
+    <summary>Check out the info and slides for Fall26</summary>
+    <div class="seminar-table-scroll" role="region" aria-label="Seminar schedule and slides" tabindex="0">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Presenter</th>
+            <th scope="col">Seminar date</th>
+            <th scope="col">Loc</th>
+            <th scope="col">Title</th>
+            <th scope="col">Slide link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Yingbin Liang</td>
+            <td><time datetime="2026-12-02">Dec 2, 2026</time></td>
+            <td>601 CSB</td>
+            <td><a href="https://hajim.rochester.edu/ece/news-events/events/2026/2026-12-d02_liang_yingbin_event.html">RL Post-Training Unveiled: How Transformers Learn to Reason and Search</a></td>
+            <td>slide</td>
+          </tr>
+          <tr>
+            <td>Litian Liu</td>
+            <td><time datetime="2026-10-21">Oct 21, 2026</time></td>
+            <td>601 CSB</td>
+            <td><a href="https://hajim.rochester.edu/ece/news-events/events/2026/2026-10-21_liu.html">Detecting Uncertainty to Enhance AI Reliability</a></td>
+            <td>slide</td>
+          </tr>
+          <tr>
+            <td>Qing Qu</td>
+            <td><time datetime="2026-10-16">Oct 16, 2026</time></td>
+            <td>601 CSB</td>
+            <td><a href="https://hajim.rochester.edu/ece/news-events/events/2026/2026-10-16_qu-seminar.html">Training Task Diversity Shapes In-Context Learning via Low-Dimensional Subspaces</a></td>
+            <td><a href="files/seminar/slides_1016_QingQu.pdf">slide</a></td>
+          </tr>
+          <tr>
+            <td>Lisha Chen</td>
+            <td><time datetime="2026-10-14">Oct 14, 2026</time></td>
+            <td>601 CSB</td>
+            <td><a href="https://hajim.rochester.edu/ece/news-events/events/2026/2026-10-14_chen.html">Preference-Guided Multi-Objective Learning: Covering and Targeting the Pareto Front</a></td>
+            <td>slide</td>
+          </tr>
+          <tr>
+            <td>Shiqian Ma</td>
+            <td><time datetime="2026-09-30">Sep 30, 2026</time></td>
+            <td>601 CSB</td>
+            <td><a href="https://hajim.rochester.edu/ece/news-events/events/2026/2026-09-08_ma_shiqian_event.html">Demystifying Manifold Constraints in LLM Pre-Training</a></td>
+            <td><a href="files/seminar/slides_0930_ShiqianMa.pdf">slide</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+</li>
 <li><p>IEEE global Women in Engineering (WIE) Workshop, 2024</p>
 </li>  
 <li><p>IEEE Sensor Array and Multichannel Signal Processing Workshop (SAM), 2024</p>
